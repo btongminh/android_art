@@ -28,11 +28,13 @@
 #include "base/macros.h"
 #include "globals.h"
 
-//#if defined(__APPLE__)
+#if defined(__APPLE__)
 #define ART_USE_FUTEXES 0
-//#else
-//#define ART_USE_FUTEXES 1
-//#endif
+#else
+#define ART_USE_FUTEXES 1
+#endif
+#undef ART_USE_FUTEXES
+#define ART_USE_FUTEXES 0
 
 // Currently Darwin doesn't support locks with timeouts.
 #if !defined(__APPLE__)
